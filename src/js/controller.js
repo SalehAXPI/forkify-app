@@ -2,12 +2,11 @@ import * as model from "./model";
 import { state } from "./model";
 import recipeView from "./views/recipeView";
 import searchView from "./views/searchView";
-import ResultsView from "./views/resultsView";
+import resultsView from "./views/resultsView";
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
-import resultsView from "./views/resultsView";
 
 const controlRecipes = async function () {
   try {
@@ -31,14 +30,14 @@ const controlSearchResults = async function () {
     // 1) Get Search Query
     const query = searchView.getQuery();
 
-    ResultsView.renderSpinner();
+    resultsView.renderSpinner();
 
     // 2) Load Search Results
     await model.loadSearchResult(query);
 
     // 3) Render Results
     // resultsView.render(state.search.results);
-    resultsView.render(model.getSearchResultPage())
+    resultsView.render(model.getSearchResultPage());
   } catch (e) {
     resultsView.renderError(e);
   }
