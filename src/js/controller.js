@@ -29,6 +29,7 @@ const controlSearchResults = async function () {
   try {
     // 1) Get Search Query
     const query = searchView.getQuery();
+    if (!query) return;
 
     resultsView.renderSpinner();
 
