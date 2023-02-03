@@ -11,11 +11,39 @@ export default class View {
     this._changeUi(markup);
   }
 
+  update(data) {
+    if (!data || data.length === 0) throw new Error();
+
+    this._data = data;
+    const newMarkup = this._genMarkup();
+
+    const newDom = document.createRange().createContextualFragment(newMarkup);
+    const newElement = Array.from(newDom.querySelectorAll("*"));
+    const currentEl = Array.from(this._parentEl.querySelectorAll("*"));
+
+    newElement.forEach((newEl, i) => {
+      const curEl = currentEl[i];
+
+      // Update changes TEXT
+      if (
+        !newEl.isEqualNode(curEl) &&
+        newEl.firstChild?.nodeValue.trim() !== ""
+      )
+        curEl.innerText = newEl.innerText;
+
+      // Update changes ATTRIBUTE
+      if (!newEl.isEqualNode(curEl))
+        Array.from(newEl.attributes).forEach((attr) =>
+          curEl.setAttribute(attr.name, attr.value)
+        );
+    });
+  }
+
   renderSpinner() {
     const markup = `
-    <div class='spinner'>
+    <div class="spinner">
         <svg>
-          <use href='${icons}#icon-loader'></use>
+          <use href="${icons}#icon-loader"></use>
        </svg>
     </div>`;
 
@@ -24,10 +52,10 @@ export default class View {
 
   renderError() {
     const markup = `
-    <div class='error'>
+    <div class="error">
         <div>
           <svg>
-            <use href='${icons}#icon-alert-triangle'></use>
+            <use href="${icons}#icon-alert-triangle"></use>
           </svg>
         </div>
         <p>${this._errorMessage}</p>
@@ -39,10 +67,10 @@ export default class View {
 
   renderMessage(message) {
     const markup = `
-    <div class='message'>
+    <div class="message">
         <div>
           <svg>
-            <use href='${icons}#icon-smile'></use>
+            <use href="${icons}#icon-smile"></use>
           </svg>
         </div>
         <p>${message}</p>
