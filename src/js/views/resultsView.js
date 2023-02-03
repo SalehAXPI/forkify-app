@@ -11,15 +11,19 @@ class ResultsView extends View {
   }
 
   _genMarkupPre(ev) {
+    const id = window.location.hash.slice(1);
+
     return `
-        <li class='preview'>
-          <a class='preview__link' href='#${ev.id}'>
-            <figure class='preview__fig'>
-              <img src='${ev.imageUrl}' alt='Test' />
+        <li class="preview">
+          <a class="preview__link ${
+            id === ev.id ? "preview__link--active" : ""
+          }" href="#${ev.id}">
+            <figure class="preview__fig">
+              <img src="${ev.imageUrl}" alt="Test" />
             </figure>
-            <div class='preview__data'>
-              <h4 class='preview__title'>${ev.title}</h4>
-              <p class='preview__publisher'>${ev.publisher}</p>
+            <div class="preview__data">
+              <h4 class="preview__title">${ev.title}</h4>
+              <p class="preview__publisher">${ev.publisher}</p>
             </div>
           </a>
         </li>
