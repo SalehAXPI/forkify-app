@@ -19,6 +19,7 @@ const controlRecipes = async function () {
     resultsView.update(model.getSearchResultPage(model.state.search.page));
 
     // 1) Loading Recipe
+    debugger
     await model.loadRecipe(id);
 
     // 2) Rendering Recipe

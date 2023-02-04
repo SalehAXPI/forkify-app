@@ -12,8 +12,6 @@ export default class View {
   }
 
   update(data) {
-    if (!data || data.length === 0) throw new Error();
-
     this._data = data;
     const newMarkup = this._genMarkup();
 

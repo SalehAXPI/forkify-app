@@ -126,6 +126,7 @@ class RecipeView extends View {
   }
 
   getHash() {
+    debugger
     return window.location.hash.slice(1);
   }
 }
