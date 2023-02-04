@@ -29,7 +29,7 @@ export default class View {
         !newEl.isEqualNode(curEl) &&
         newEl.firstChild?.nodeValue.trim() !== ""
       )
-        curEl.innerText = newEl.innerText;
+        curEl.textContent = newEl.textContent;
 
       // Update changes ATTRIBUTE
       if (!newEl.isEqualNode(curEl))
