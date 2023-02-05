@@ -1,7 +1,6 @@
 class SearchView {
   _parentEl = document.querySelector(".search");
   _searchField = this._parentEl.querySelector(".search__field");
-  _pag = document.querySelector(".pagination");
 
   getQuery() {
     const query = this._searchField.value.trim();
@@ -18,7 +17,6 @@ class SearchView {
 
   _clearInput() {
     this._searchField.value = "";
-    this._pag.innerHTML = "";
   }
 }
 
