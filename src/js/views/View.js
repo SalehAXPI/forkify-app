@@ -3,11 +3,14 @@ import icons from "url:../../img/icons.svg";
 export default class View {
   _data;
 
-  render(data) {
+  render(data, render = true) {
     if (!data || data.length === 0) throw new Error();
 
     this._data = data;
     const markup = this._genMarkup();
+
+    if (!render) return markup;
+
     this._changeUi(markup);
   }
 
