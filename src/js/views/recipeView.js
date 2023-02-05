@@ -43,8 +43,8 @@ class RecipeView extends View {
           <use href="${icons}#icon-clock"></use>
         </svg>
         <span class="recipe__info-data recipe__info-data--minutes">${
-      this._data.cookingTime
-    }</span>
+          this._data.cookingTime
+        }</span>
         <span class="recipe__info-text">minutes</span>
       </div>
       <div class="recipe__info">
@@ -52,21 +52,21 @@ class RecipeView extends View {
           <use href="${icons}#icon-users"></use>
         </svg>
         <span class="recipe__info-data recipe__info-data--people">${
-      this._data.servings
-    }</span>
+          this._data.servings
+        }</span>
         <span class="recipe__info-text">servings</span>
 
         <div class="recipe__info-buttons">
           <button data-update-serv="${
-      this._data.servings - 1
-    }" class="btn--tiny btn--increase-servings">
+            this._data.servings - 1
+          }" class="btn--tiny btn--increase-servings">
             <svg>
               <use href="${icons}#icon-minus-circle"></use>
             </svg>
           </button>
           <button data-update-serv="${
-      this._data.servings + 1
-    }" class="btn--tiny btn--increase-servings">
+            this._data.servings + 1
+          }" class="btn--tiny btn--increase-servings">
             <svg>
               <use href="${icons}#icon-plus-circle"></use>
             </svg>
@@ -74,13 +74,17 @@ class RecipeView extends View {
         </div>
       </div>
 
-      <div class="recipe__user-generated"></div>
-      <button class="btn--round btn--bookmark">
-        <svg class="">
-          <use href="${icons}#icon-bookmark${this._data.bookmarked ? '-fill' : ''}">
-          </use>
-        </svg>
-      </button>
+      <div style="display: flex; align-items: center">
+        <div class="recipe__user-generated"></div>
+        <button class="btn--round btn--bookmark">
+          <svg class="">
+            <use href="${icons}#icon-bookmark${
+      this._data.bookmarked ? "-fill" : ""
+    }">
+           </use>
+          </svg>
+         </button>
+      </div>
     </div>
 
     <div class="recipe__ingredients">
@@ -95,8 +99,8 @@ class RecipeView extends View {
       <p class="recipe__directions-text">
         This recipe was carefully designed and tested by
         <span class="recipe__publisher">${
-      this._data.publisher
-    }</span>. Please check out
+          this._data.publisher
+        }</span>. Please check out
         directions at their website.
       </p>
       <a

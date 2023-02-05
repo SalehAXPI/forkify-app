@@ -18,9 +18,9 @@
       top: 0;
       left: 0;
       background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
+                      to right bottom,
+                      $color-grad-1,
+                      $color-grad-2
       );
       opacity: 0.6;
     }
@@ -51,9 +51,9 @@
       box-decoration-break: clone;
       padding: 1.3rem 2rem;
       background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
+                      to right bottom,
+                      $color-grad-1,
+                      $color-grad-2
       );
     }
 
@@ -67,7 +67,15 @@
   &__details {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 7.5rem 8rem 3.5rem 8rem;
+    row-gap: 3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10.5rem 3rem 3.5rem;
+    }
   }
 
   &__info {
@@ -116,6 +124,10 @@
       height: 2.25rem;
       width: 2.25rem;
       fill: $color-primary;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      margin-left: 0;
     }
   }
 
@@ -175,5 +187,11 @@
 
   &__publisher {
     font-weight: 700;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 }

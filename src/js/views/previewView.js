@@ -1,6 +1,4 @@
 import View from "./View";
-import icons from "url:../../img/icons.svg";
-
 
 class PreviewView extends View {
   _genMarkup() {
@@ -9,8 +7,8 @@ class PreviewView extends View {
     return `
         <li class="preview">
           <a class="preview__link ${
-      id === this._data.id ? "preview__link--active" : ""
-    }" href="#${this._data.id}">
+            id === this._data.id ? "preview__link--active" : ""
+          }" href="#${this._data.id}">
             <figure class="preview__fig">
               <img src="${this._data.imageUrl}" alt="${this._data.title}" />
             </figure>

@@ -2,11 +2,22 @@
   padding: 3rem 0;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    flex-direction: column;
+    padding-top: 0;
+  }
 }
 
 .results {
   list-style: none;
   margin-bottom: 2rem;
+  @media only screen and (max-width: $bp-small) {
+    height: 35rem;
+    overflow-y: auto;
+  }
 }
 
 .pagination {
@@ -23,9 +34,14 @@
     &--prev {
       float: left;
     }
+
     &--next {
       float: right;
     }
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin: 0;
   }
 }
 

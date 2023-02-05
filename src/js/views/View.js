@@ -46,7 +46,9 @@ export default class View {
         <svg>
           <use href="${icons}#icon-loader"></use>
        </svg>
-    </div>`;
+    </div>
+    <p style="height: 50rem">&nbsp;</p>
+`;
 
     this._changeUi(markup);
   }
@@ -60,6 +62,7 @@ export default class View {
           </svg>
         </div>
         <p>${this._errorMessage}</p>
+        <p style="height: 50rem">&nbsp;</p>
       </div>
     `;
 
