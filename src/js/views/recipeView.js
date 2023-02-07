@@ -5,7 +5,6 @@ import icons from "url:../../img/icons.svg";
 class RecipeView extends View {
   _parentEl = document.querySelector(".recipe");
   _errorMessage = "We couldn't find that recipe, please try another one";
-  _message = "";
 
   addHandlerUpdateService(handler) {
     this._parentEl.addEventListener("click", (e) => {
@@ -43,8 +42,8 @@ class RecipeView extends View {
           <use href="${icons}#icon-clock"></use>
         </svg>
         <span class="recipe__info-data recipe__info-data--minutes">${
-          this._data.cookingTime
-        }</span>
+      this._data.cookingTime
+    }</span>
         <span class="recipe__info-text">minutes</span>
       </div>
       <div class="recipe__info">
@@ -52,21 +51,21 @@ class RecipeView extends View {
           <use href="${icons}#icon-users"></use>
         </svg>
         <span class="recipe__info-data recipe__info-data--people">${
-          this._data.servings
-        }</span>
+      this._data.servings
+    }</span>
         <span class="recipe__info-text">servings</span>
 
         <div class="recipe__info-buttons">
           <button data-update-serv="${
-            this._data.servings - 1
-          }" class="btn--tiny btn--increase-servings">
+      this._data.servings - 1
+    }" class="btn--tiny btn--increase-servings">
             <svg>
               <use href="${icons}#icon-minus-circle"></use>
             </svg>
           </button>
           <button data-update-serv="${
-            this._data.servings + 1
-          }" class="btn--tiny btn--increase-servings">
+      this._data.servings + 1
+    }" class="btn--tiny btn--increase-servings">
             <svg>
               <use href="${icons}#icon-plus-circle"></use>
             </svg>
@@ -75,7 +74,7 @@ class RecipeView extends View {
       </div>
 
       <div style="display: flex; align-items: center">
-        <div class="recipe__user-generated"></div>
+        ${this._data.key ? `<div class="recipe__user-generated"><svg><use href="${icons}#icon-user"></use></svg></div>` : ""}
         <button class="btn--round btn--bookmark">
           <svg class="">
             <use href="${icons}#icon-bookmark${
@@ -99,8 +98,8 @@ class RecipeView extends View {
       <p class="recipe__directions-text">
         This recipe was carefully designed and tested by
         <span class="recipe__publisher">${
-          this._data.publisher
-        }</span>. Please check out
+      this._data.publisher
+    }</span>. Please check out
         directions at their website.
       </p>
       <a
@@ -128,8 +127,8 @@ class RecipeView extends View {
               <use href="${icons}#icon-check"></use>
             </svg>
             <div class="recipe__quantity">${
-              ing.quantity ? fraction(ing.quantity).toString() : ""
-            }</div>
+      ing.quantity ? fraction(ing.quantity).toString() : ""
+    }</div>
             <div class="recipe__description">
               <span class="recipe__unit">${ing.unit}</span>
               ${ing.description}

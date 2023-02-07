@@ -8,14 +8,44 @@ export const timeout = function (s) {
   });
 };
 
-export const getJSON = async function (url) {
-  try {
-    const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
-    const data = await res.json();
-    if (!res.ok) throw new Error();
-    return data;
-  } catch (e) {
-    // to Handle The Error In model.js catch Block.
-    throw e;
-  }
+export const AJAX = async function (url, uploadData = undefined) {
+  const res = await Promise.race([
+    uploadData
+      ? fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(uploadData),
+        })
+      : fetch(url),
+    timeout(TIMEOUT_SEC),
+  ]);
+  const data = await res.json();
+  if (!res.ok) throw new Error();
+  return data;
 };
+
+/*
+export const getJSON = async function (url) {
+  const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
+  const data = await res.json();
+  if (!res.ok) throw new Error();
+  return data;
+};
+
+export const sendJSON = async function (url, uploadData) {
+  const res = await Promise.race([
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(uploadData),
+    }),
+    timeout(TIMEOUT_SEC),
+  ]);
+  const data = await res.json();
+  if (!res.ok) throw new Error();
+  return data;
+}; */
