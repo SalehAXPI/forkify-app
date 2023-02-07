@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100rem;
+  width: 95rem;
   background-color: white;
   border-radius: 9px;
 
@@ -22,6 +22,12 @@
     cursor: pointer;
     border: none;
     background: none;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    height: 70%;
+    width: 100%;
+    overflow-y: auto;
   }
 }
 
@@ -95,5 +101,10 @@
   &__btn {
     grid-column: 1 / -1;
     justify-self: center;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
   }
 }
