@@ -3,7 +3,7 @@ import icons from "url:../../img/icons.svg";
 
 class PaginationView extends View {
   _parentEl = document.querySelector(".pagination");
-  _currentPage;
+  _numPages;
 
   addHandlerClick(handler) {
     this._parentEl.addEventListener("click", (e) => {
@@ -16,26 +16,31 @@ class PaginationView extends View {
   }
 
   _genMarkup() {
-    this._currentPage = this._data.page;
-
-    const numPages = Math.ceil(
+    this._numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
 
     // Page 1, There are other pages
-    if (this._currentPage === 1 && numPages > 1) {
-      return this._genMarkupButton("next");
+    if (this._data.page === 1 && this._numPages > 1) {
+      return `
+      ${this._genMarkupCur()}
+      ${this._genMarkupButton("next")}
+      `;
     }
 
     // Last Page
-    if (this._currentPage === numPages && numPages > 1) {
-      return this._genMarkupButton("prev");
+    if (this._data.page === this._numPages && this._numPages > 1) {
+      return `
+      ${this._genMarkupButton("prev")}
+      ${this._genMarkupCur()}
+      `;
     }
 
     // Other page
-    if (this._currentPage < numPages) {
+    if (this._data.page < this._numPages) {
       return `
       ${this._genMarkupButton("prev")}
+      ${this._genMarkupCur()}
       ${this._genMarkupButton("next")}
       `;
     }
@@ -48,9 +53,9 @@ class PaginationView extends View {
     if (dir === "next") {
       return `
       <button data-goto="${
-        this._currentPage + 1
+        this._data.page + 1
       }" class="btn--inline pagination__btn--next">
-        <span>Page ${this._currentPage + 1}</span>
+        <span>Page ${this._data.page + 1}</span>
         <svg class="search__icon">
           <use href="${icons}#icon-arrow-right"></use>
         </svg>
@@ -60,13 +65,21 @@ class PaginationView extends View {
 
     return `
     <button data-goto="${
-      this._currentPage - 1
+      this._data.page - 1
     }" class="btn--inline pagination__btn--prev">
        <svg class="search__icon">
          <use href="${icons}#icon-arrow-left"></use>
        </svg>
-       <span>Page ${this._currentPage - 1}</span>
+       <span>Page ${this._data.page - 1}</span>
      </button>
+    `;
+  }
+
+  _genMarkupCur() {
+    return `
+    <button class="btn--small">
+      ${this._data.page}/${this._numPages}
+    </button>
     `;
   }
 }
